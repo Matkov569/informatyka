@@ -1,0 +1,444 @@
+#include "funkcje.h"
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int kierunek() {
+	int k = rand() % 4;
+	return k;
+}
+
+void statki(int plansza[10][10]) {
+	srand(time(NULL));
+	int cztero = 1, trzy = 2, dwu = 3, jedno = 4;
+	int i, j, k, p = 0, rozmiar;
+	
+	rozmiar = 4;
+	do {
+		//losuj pole
+		i = rand() % 10;
+		j = rand() % 10;
+		//cout << i << " " << j << endl;
+		if (plansza[i][j] == 0) {
+			//losuj kierunek
+			k = kierunek();
+			//cout << k << endl;
+			p = 0;
+			if (k == 0) {
+				//gora
+				if (i >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						cztero--;
+					}
+				}
+			}
+			  else if (k == 1) {
+					//prawo
+					if (j > 0 && j + rozmiar - 1 < 10) {
+						p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+						//brak niczego na drodze
+						if (p != 1) {
+							//postaw statek
+							statkiWpisz(plansza, i, j, rozmiar, k);
+							cztero--;
+						}
+					}
+
+				}
+				else if (k == 2) {
+					//dol
+					if (i >= 0 && i + rozmiar < 11) {
+						p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+						//brak niczego na drodze
+						if (p != 1) {
+							//postaw statek
+							statkiWpisz(plansza, i, j, rozmiar, k);
+							cztero--;
+						}
+					}
+				}
+				else {
+					//lewo
+					if (j >= rozmiar - 1) {
+						p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+						//brak niczego na drodze
+						if (p != 1) {
+							//postaw statek
+							statkiWpisz(plansza, i, j, rozmiar, k);
+							cztero--;
+						}
+					}
+				}
+		}
+
+	} while (cztero != 0);
+
+	rozmiar = 3;
+	do {
+		//losuj pole
+		i = rand() % 10;
+		j = rand() % 10;
+		//cout << i << " " << j << endl;
+		if (plansza[i][j] == 0) {
+			//losuj kierunek
+			k = kierunek();
+			//cout << k << endl;
+			p = 0;
+			if (k == 0) {
+				//gora
+				if (i >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						trzy--;
+					}
+				}
+			}
+			else if (k == 1) {
+				//prawo
+				if (j > 0 && j + rozmiar - 1 < 10) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						trzy--;
+					}
+				}
+
+			}
+			else if (k == 2) {
+				//dol
+				if (i >= 0 && i + rozmiar < 11) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						trzy--;
+					}
+				}
+			}
+			else {
+				//lewo
+				if (j >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						trzy--;
+					}
+				}
+			}
+		}
+
+	} while (trzy != 0);
+	
+	rozmiar = 2;
+	do {
+		//losuj pole
+		i = rand() % 10;
+		j = rand() % 10;
+		//cout << i << " " << j << endl;
+		if (plansza[i][j] == 0) {
+			//losuj kierunek
+			k = kierunek();
+			//cout << k << endl;
+			p = 0;
+			if (k == 0) {
+				//gora
+				if (i >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						dwu--;
+					}
+				}
+			}
+			else if (k == 1) {
+				//prawo
+				if (j > 0 && j + rozmiar - 1 < 10) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						dwu--;
+					}
+				}
+
+			}
+			else if (k == 2) {
+				//dol
+				if (i >= 0 && i + rozmiar < 11) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						dwu--;
+					}
+				}
+			}
+			else {
+				//lewo
+				if (j >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						dwu--;
+					}
+				}
+			}
+		}
+
+	} while (dwu != 0);
+
+	rozmiar = 1;
+	do {
+		//losuj pole
+		i = rand() % 10;
+		j = rand() % 10;
+		//cout << i << " " << j << endl;
+		if (plansza[i][j] == 0) {
+			//losuj kierunek
+			k = kierunek();
+			//cout << k << endl;
+			p = 0;
+			if (k == 0) {
+				//gora
+				if (i >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						jedno--;
+					}
+				}
+			}
+			else if (k == 1) {
+				//prawo
+				if (j > 0 && j + rozmiar - 1 < 10) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						jedno--;
+					}
+				}
+
+			}
+			else if (k == 2) {
+				//dol
+				if (i >= 0 && i + rozmiar < 11) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						jedno--;
+					}
+				}
+			}
+			else {
+				//lewo
+				if (j >= rozmiar - 1) {
+					p = sprawdzPustePola(plansza, i, j, rozmiar, k);
+					//brak niczego na drodze
+					if (p != 1) {
+						//postaw statek
+						statkiWpisz(plansza, i, j, rozmiar, k);
+						jedno--;
+					}
+				}
+			}
+		}
+
+	} while (jedno != 0);
+}
+
+void statkiWpisz(int tab[10][10], int i, int j, int r, int k) {
+	if (k == 0) { //gora
+		for (int w = i; w > i - r; w--) {
+			tab[w][j] = r;
+			if (j + 1 < 10)tab[w][j + 1] = -1;
+			if (j - 1 >= 0)tab[w][j - 1] = -1;
+
+			if (w - 1 >= 0 && w == i - r + 1) {
+				tab[w - 1][j] = -1;
+				if (j - 1 >= 0)tab[w - 1][j - 1] = -1;
+				if (j + 1 < 10)tab[w - 1][j + 1] = -1;
+			}
+
+			if (w + 1 < 10 && w == i) {
+				tab[w + 1][j] = -1;
+				if (j - 1 >= 0)tab[w + 1][j - 1] = -1;
+				if (j + 1 < 10)tab[w + 1][j + 1] = -1;
+			}
+		}
+	}
+	else if (k == 1) { //prawo
+		for (int w = j; w < j + r; w++) {
+			tab[i][w] = r;
+			if (i - 1 >= 0)	tab[i - 1][w] = -1;
+			if (i + 1 < 10) tab[i + 1][w] = -1;
+
+			if (w + 1 < 10 && w==j+r-1) {
+				tab[i][w + 1] = -1;
+				if (i - 1 >= 0)tab[i - 1][w + 1] = -1;
+				if (i + 1 < 10)tab[i + 1][w + 1] = -1;
+			}
+
+			if (w - 1 >= 0 && w==j) {
+				tab[i][w - 1] = -1;
+				if (i - 1 >= 0)tab[i - 1][w - 1] = -1;
+				if (i + 1 < 10)tab[i + 1][w - 1] = -1;
+			}	
+		}
+	}
+	else if (k == 2) { //dół
+		for (int w = i; w < i + r; w++) {
+			tab[w][j] = r;
+			if (j + 1 < 10)tab[w][j + 1] = -1;
+			if (j - 1 >= 0)tab[w][j - 1] = -1;
+
+			if (w - 1 >= 0 && w == i) {
+				tab[w - 1][j] = -1;
+				if (j - 1 >= 0)tab[w - 1][j - 1] = -1;
+				if (j + 1 < 10)tab[w - 1][j + 1] = -1;
+			}
+
+			if (w + 1 < 10 && w == i + r - 1) {
+				tab[w + 1][j] = -1;
+				if (j - 1 >= 0)tab[w + 1][j - 1] = -1;
+				if (j + 1 < 10)tab[w + 1][j + 1] = -1;
+			}
+		}
+	}
+	else { //lewo
+		for (int w = j; w > j - r; w--) {
+			tab[i][w] = r;
+			if (i - 1 >= 0)	tab[i - 1][w] = -1;
+			if (i + 1 < 10) tab[i + 1][w] = -1;
+
+			if (w + 1 < 10 && w == j) {
+				tab[i][w + 1] = -1;
+				if (i - 1 >= 0)tab[i - 1][w + 1] = -1;
+				if (i + 1 < 10)tab[i + 1][w + 1] = -1;
+			}
+
+			if (w - 1 >= 0 && w == j - r + 1) {
+				tab[i][w - 1] = -1;
+				if (i - 1 >= 0)tab[i - 1][w - 1] = -1;
+				if (i + 1 < 10)tab[i + 1][w - 1] = -1;
+			}
+		}
+	}
+}
+
+int sprawdzPustePola(int tab[10][10], int i, int j, int r, int k) {
+	int p = 0;
+	if(k==0){ //gora
+		for (int w = i; w > i - r; w--) {
+			if (tab[w][j] != 0
+				|| tab[w][j + 1] > 0
+				|| tab[w][j - 1] > 0
+				|| tab[w - 1][j] > 0
+				|| tab[w - 1][j - 1] > 0
+				|| tab[w - 1][j + 1] > 0
+				|| tab[w + 1][j] > 0
+				|| tab[w + 1][j - 1] > 0
+				|| tab[w + 1][j + 1] > 0 )
+			{
+				p = 1;
+				break;
+			}
+		}
+	}
+	else if (k == 1) { //prawo
+		for (int w = j; w < j + r; w++) {
+			if (tab[i][w] != 0
+				|| tab[i][w + 1] > 0
+				|| tab[i][w - 1] > 0
+				|| tab[i - 1][w] > 0
+				|| tab[i - 1][w - 1] > 0
+				|| tab[i - 1][w + 1] > 0
+				|| tab[i + 1][w] > 0
+				|| tab[i + 1][w - 1] > 0
+				|| tab[i + 1][w + 1] > 0)
+			{
+				p = 1;
+				break;
+			}
+		}
+	}
+	else if (k == 2) { //dół
+		for (int w = i; w < i + r; w++) {
+			if (tab[w][j] != 0
+				|| tab[w][j + 1] > 0
+				|| tab[w][j - 1] > 0
+				|| tab[w - 1][j] > 0
+				|| tab[w - 1][j - 1] > 0
+				|| tab[w - 1][j + 1] > 0
+				|| tab[w + 1][j] > 0
+				|| tab[w + 1][j - 1] > 0
+				|| tab[w + 1][j + 1] > 0)
+			{
+				p = 1;
+				break;
+			}
+		}
+	}
+	else{ //lewo
+		for (int w = j; w > j - r; w--) {
+			if (tab[i][w] != 0
+				|| tab[i][w + 1] > 0
+				|| tab[i][w - 1] > 0
+				|| tab[i - 1][w] > 0
+				|| tab[i - 1][w - 1] > 0
+				|| tab[i - 1][w + 1] > 0
+				|| tab[i + 1][w] > 0
+				|| tab[i + 1][w - 1] > 0
+				|| tab[i + 1][w + 1] > 0)
+			{
+				p = 1;
+				break;
+			}
+		}
+	}
+	return p;
+}
+
+void wypiszStatki(int tab[10][10]) {
+	for (int i = -1; i < 11; i++) {
+		for (int j = -1; j < 11; j++) {
+			if (i == -1 || i == 10 || j == -1 || j == 10) cout << "X";
+			else if (tab[i][j] < 1)cout << ".";
+			else cout << "O";
+		}
+		cout << endl;
+	}
+}
+
+void zeraStatki(int tab[10][10]) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			tab[i][j]=0;
+		}
+	}
+}
